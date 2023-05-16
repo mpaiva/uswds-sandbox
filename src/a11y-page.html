@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility Tree Demo</title>
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: #111;
+      }
+      .skip-to-main-content-link {
+        position: absolute;
+        left: -9999px;
+        z-index: 999;
+        padding: 1em;
+        background-color: #0000ff;
+        color: white;
+        opacity: 0;
+      }
+      .skip-to-main-content-link:focus {
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 1;
+      }
+      header:focus-within,
+      main:focus-within,
+      footer:focus-within {
+        display: block;
+        outline: 4px solid red;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-to-main-content-link">Skip to main content</a>
+    <header>
+      <nav aria-label="primary">
+        <ul role="list">
+          <li><a href="https://www.aemcorp.com">Home</a></li>
+          <li><a href="javascript:void(0);">About</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main aria-labelledby="page-title">
+      <h1 id="page-title">
+        <a id="main" name="main">Page name</a>
+      </h1>
+      <p id="page-description">
+        As a good practice, headings should be short and objective, followed by
+        a single descriptive sentence that can be used as aria-describedby in
+        the heading.
+
+        <a href="#">First link in the main section</a>
+      </p>
+    </main>
+    <footer>
+      <nav aria-label="secondary">
+        <ul role="list">
+          <li><a href="https://www.aemcorp.com">Home</a></li>
+          <li><a href="javascript:void(0);">Accessibility Statement</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>

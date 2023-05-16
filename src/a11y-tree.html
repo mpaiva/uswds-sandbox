@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Accessibility Tree Demo</title>
+    <style>
+      :root {
+        --primary: #007;
+        --focus: #f60;
+        --main: #080808;
+        --background: #faf8ef;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        margin: 2rem;
+        text-align: center;
+      }
+      .demo {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 50px;
+      }
+
+      button,
+      .button {
+        background: var(--primary);
+        border: 2px solid var(--primary);
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        display: block;
+        font-size: 20px;
+        padding: 10px 15px;
+      }
+      button:active,
+      .button:active,
+      button:hover,
+      .button:hover {
+        background: #fff;
+        color: var(--primary);
+      }
+
+      button:focus,
+      .button:focus {
+        outline-color: var(--focus);
+        outline-offset: 8px;
+        outline-style: solid;
+        outline-width: 4px;
+      }
+      .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        color: var(--primary);
+        border: 1px solid var(--primary);
+        border-radius: 4px;
+        font-size: 2rem;
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Which of the following buttons is fake?</h1>
+    <div class="demo">
+      <button onclick="click1()">Click me!</button>
+      <div class="button">Click me!</div>
+    </div>
+
+    <div role="alert" id="msg" class="alert">Alert box</div>
+    <script>
+      const click1 = () => {
+        // window.alert("You can click me!");
+
+        document.getElementById("msg").innerHTML = "I'm a real button!";
+      };
+
+      document.querySelectorAll(".button").forEach((button) => {
+        button.addEventListener("click", () => {
+          // window.alert("You can click me too!");
+          document.getElementById("msg").innerHTML = "I'm fake!";
+        });
+      });
+    </script>
+  </body>
+</html>

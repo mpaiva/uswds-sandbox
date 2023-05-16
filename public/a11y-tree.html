@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      fieldset {
+        border-color: #eee;
+        width: 10em;
+      }
+
+      fieldset legend {
+        font-size: 100%;
+      }
+
+      label,
+      div.checkbox {
+        padding: 2px;
+        width: 10em;
+        display: block;
+        margin-top: 0.25em;
+        margin-bottom: 0.25em;
+      }
+
+      label input {
+        margin-right: 0.5em;
+      }
+
+      div.checkbox span {
+        padding: 0.25em;
+        margin-right: 0.25em;
+      }
+      div.checkbox span:before {
+        content: "✗";
+        color: red;
+      }
+
+      div.checkbox.checked span {
+        margin-right: 0.375em;
+      }
+
+      div.checkbox.checked span:before {
+        content: "✓";
+        color: green;
+        font-size: 90%;
+      }
+    </style>
+    <script>
+      function toggleCheckbox(node) {
+        if (node.classList.contains("checked")) {
+          node.classList.remove("checked");
+        } else {
+          node.classList.add("checked");
+        }
+      }
+
+      function clickCheckbox(event) {
+        var cb = event.currentTarget;
+        toggleCheckbox(cb);
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    </script>
+  </head>
+  <body>
+    <fieldset>
+      <legend>Pizza Toppings</legend>
+
+      <label>
+        <input type="checkbox" />
+        Green pepper
+      </label>
+
+      <label>
+        <input type="checkbox" />
+        Onion
+      </label>
+
+      <div class="checkbox" onclick="clickCheckbox(event)">Mushrooms</div>
+
+      <div class="checkbox" onclick="clickCheckbox(event)">Spinach</div>
+    </fieldset>
+  </body>
+</html>
